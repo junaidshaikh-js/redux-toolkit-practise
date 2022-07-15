@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import humanReducer from "../features/human/humanSlice";
+import taskReducer from "../features/task/taskSlice";
 
 export const store = configureStore({
   reducer: {
     humans: humanReducer,
+    tasks: taskReducer,
   },
 });
 

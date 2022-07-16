@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { taskSlice, taskType } from "./taskSlice";
+import { taskSlice, taskType, toggle } from "./taskSlice";
 
 export const Task = ({ task }: { task: taskType }) => {
   const humans = useAppSelector((state) => state.humans);
@@ -12,14 +12,7 @@ export const Task = ({ task }: { task: taskType }) => {
           type="checkbox"
           aria-label="mark-completed"
           checked={task.isCompleted}
-          onChange={(e) =>
-            dispatch(
-              taskSlice.actions.toggleTask({
-                taskId: task.id,
-                completed: e.target.checked,
-              })
-            )
-          }
+          onChange={(e) => dispatch(toggle(task.id, e.target.checked))}
         />
         <h3>{task.title}</h3>
       </div>

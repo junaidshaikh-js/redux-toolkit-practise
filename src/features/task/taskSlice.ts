@@ -1,4 +1,9 @@
-import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
+import {
+  createAction,
+  createAsyncThunk,
+  createSlice,
+  nanoid,
+} from "@reduxjs/toolkit";
 import { fetchTask } from "../../utility";
 
 export type taskType = {
@@ -64,5 +69,9 @@ export const taskSlice = createSlice({
     });
   },
 });
+
+export const toggle = createAction("tasks/toggleTask", (taskId, completed) => ({
+  payload: { taskId, completed },
+}));
 
 export default taskSlice.reducer;
